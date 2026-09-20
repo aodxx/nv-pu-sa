@@ -30,5 +30,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: 793f6dc7afb275fb3d03c869b1570a1a
           command: pages deploy . --project-name=nv-pu-sa
