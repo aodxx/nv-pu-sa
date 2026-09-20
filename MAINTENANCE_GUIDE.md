@@ -145,3 +145,41 @@ Token ที่เคยแสดงในภาพหรือแชตถื�
 ## 10. สถานะล่าสุด
 
 การ deploy ล่าสุดผ่าน Wrangler สำเร็จ และได้ deployment URL `https://73e3c06a.nv-pu-sa-dh8.pages.dev` เว็บไซต์หลักยังคงใช้ `https://nv-pu-sa-dh8.pages.dev` ได้ตามปกติ
+
+## 11. Bulk Import จากหน้า Admin
+
+หน้า Admin รองรับปุ่ม **นำเข้า CSV/JSON** สำหรับเพิ่มครีเอเตอร์หลายรายการพร้อมกัน สูงสุด 250 รายการต่อครั้ง ระบบจะแสดง Preview ก่อนบันทึก ตรวจ `name`, `handle`, `followers` และ handle ซ้ำในไฟล์ หากพบ handle ที่มีอยู่ในฐานข้อมูล ระบบจะข้ามรายการนั้นโดยไม่สร้างข้อมูลซ้ำ
+
+ตัวอย่าง JSON:
+
+```json
+[
+  {
+    "name": "ชื่อครีเอเตอร์",
+    "handle": "creator_handle",
+    "followers": 250000,
+    "verified": false,
+    "bio": "คำอธิบายสั้น ๆ",
+    "avatar": "https://example.com/avatar.jpg",
+    "links": {
+      "x": "https://x.com/creator_handle",
+      "instagram": "https://instagram.com/creator_handle"
+    },
+    "tags": ["18+", "Thailand"],
+    "notes": "แหล่งข้อมูลและวันที่ตรวจสอบ"
+  }
+]
+```
+
+ตัวอย่าง CSV:
+
+```csv
+name,handle,followers,verified,bio,avatar,x_url,instagram_url,tags,notes
+ชื่อครีเอเตอร์,creator_handle,250000,0,คำอธิบาย,https://example.com/avatar.jpg,https://x.com/creator_handle,https://instagram.com/creator_handle,"18+|Thailand",แหล่งข้อมูล
+```
+
+`avatar` เป็น URL รูปภาพที่ใช้งานได้ หากไม่ใส่ ระบบจะสร้างภาพอวตารสำรองจาก DiceBear ตาม handle ให้โดยอัตโนมัติ ควรใช้ภาพที่เจ้าของบัญชีเผยแพร่สาธารณะหรือภาพที่มีสิทธิ์ใช้งาน และไม่ควรคัดลอกภาพส่วนตัวหรือภาพที่มีข้อจำกัดด้านลิขสิทธิ์
+
+ขั้นตอนใช้งานคือเข้าสู่ `/admin/` → กด **นำเข้า CSV/JSON** → เลือกไฟล์หรือวางข้อมูล → กด **ตรวจข้อมูล** → ตรวจ Preview → กด **นำเข้า** → กดรีเฟรชตาราง
+
+ข้อมูลถูกส่งผ่าน endpoint ที่ต้องมี Admin token: `POST /api/admin/creators/import` และระบบจำกัด batch สูงสุด 250 รายการเพื่อป้องกัน request ใหญ่เกินไป
