@@ -75,6 +75,13 @@ nv-pu-sa/
 
 ---
 
+## Admin Console
+
+เปิด `/admin/` หลังตั้ง `ADMIN_PASSWORD` และมี D1 แล้ว  
+ดูรายละเอียดใน [docs/SETUP_D1.md](docs/SETUP_D1.md)
+
+---
+
 ## วิธีรันตอนนี้ (Static)
 
 ```bash

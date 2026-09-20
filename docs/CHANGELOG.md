@@ -8,6 +8,11 @@
 ## [Unreleased]
 
 ### Added
+- Admin Console UI ที่ `/admin/`
+  - Login ด้วย password
+  - สถิติสรุป
+  - ตารางครีเอเตอร์ + ค้นหา/กรอง
+  - เพิ่ม / แก้ไข / ซ่อน / ลบ / กู้คืน
 - Admin API (ข้อ 3–4)
   - `POST /api/admin/auth` — login รับ signed token
   - `GET/POST /api/admin/creators` — list / create

@@ -24,7 +24,7 @@
 | Documentation set | ✅ Done |
 | Cloudflare D1 setup files | ✅ Done (wrangler + migrations) — ต้องสร้าง DB จริงด้วยบัญชี Cloudflare |
 | Admin API (auth + CRUD + stats) | ✅ Done |
-| Admin Console UI | ❌ Not yet |
+| Admin Console UI | ✅ Done (`/admin/`) |
 | Public API (creators + random) | ✅ Done (ต้องมี D1 ถึงใช้งานได้) |
 | X Sync | ❌ Future |
 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · นางฟ้า</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+</head>
+<body>
+  <!-- Login -->
+  <section id="loginView" class="login-view">
+    <div class="login-card">
+      <div class="login-logo">🔐</div>
+      <h1>Admin Console</h1>
+      <p class="login-sub">นางฟ้า · แกลเลอรี่ครีเอเตอร์ X</p>
+      <form id="loginForm">
+        <label>
+          รหัสผ่าน
+          <input type="password" id="passwordInput" placeholder="Admin password" autocomplete="current-password" required />
+        </label>
+        <button type="submit" class="btn btn-primary" id="loginBtn">เข้าสู่ระบบ</button>
+        <p class="login-error" id="loginError" hidden></p>
+      </form>
+      <a href="/" class="back-link">← กลับแกลเลอรี่</a>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashView" class="dash-view" hidden>
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <a href="/admin/" class="logo">🔐 Admin · นางฟ้า</a>
+        <div class="header-right">
+          <a href="/" target="_blank" class="btn btn-ghost">ดูแกลเลอรี่ ↗</a>
+          <button class="btn btn-ghost" id="logoutBtn">ออกจากระบบ</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card"><div class="stat-val" id="sVisible">-</div><div class="stat-lbl">แสดงอยู่</div></div>
+      <div class="stat-card"><div class="stat-val" id="sHidden">-</div><div class="stat-lbl">ซ่อน</div></div>
+      <div class="stat-card"><div class="stat-val" id="sVerified">-</div><div class="stat-lbl">ยืนยันตัวตน</div></div>
+      <div class="stat-card"><div class="stat-val" id="sMax">-</div><div class="stat-lbl">ฟอลสูงสุด</div></div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <input type="search" id="adminSearch" placeholder="ค้นหาชื่อ / @handle..." />
+      <select id="adminFilter">
+        <option value="all">ทั้งหมด (ไม่รวมลบ)</option>
+        <option value="visible">แสดงอยู่</option>
+        <option value="hidden">ซ่อน</option>
+        <option value="deleted">ถูกลบ (soft)</option>
+      </select>
+      <button class="btn btn-primary" id="btnAdd">+ เพิ่มครีเอเตอร์</button>
+      <button class="btn btn-ghost" id="btnRefresh">รีเฟรช</button>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ชื่อ</th>
+            <th>@handle</th>
+            <th>Followers</th>
+            <th>สถานะ</th>
+            <th>แท็ก</th>
+            <th>จัดการ</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="7" class="loading-cell">กำลังโหลด...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Modal: Create / Edit -->
+  <div class="modal" id="formModal" hidden>
+    <div class="modal-backdrop" id="formBackdrop"></div>
+    <div class="modal-panel">
+      <h2 id="formTitle">เพิ่มครีเอเตอร์</h2>
+      <form id="creatorForm">
+        <input type="hidden" id="fId" />
+        <div class="form-grid">
+          <label>ชื่อ *<input id="fName" required /></label>
+          <label>Handle * (ไม่ใส่ @)<input id="fHandle" required placeholder="username" /></label>
+          <label>Followers<input id="fFollowers" type="number" min="0" value="0" /></label>
+          <label class="checkbox-label"><input type="checkbox" id="fVerified" /> ยืนยันตัวตน (verified)</label>
+          <label class="full">Bio<textarea id="fBio" rows="3"></textarea></label>
+          <label class="full">Avatar URL<input id="fAvatar" placeholder="https://..." /></label>
+          <label>X URL<input id="fLinkX" placeholder="https://x.com/..." /></label>
+          <label>OnlyFans<input id="fLinkOf" /></label>
+          <label>Telegram<input id="fLinkTg" /></label>
+          <label>Linktree<input id="fLinkLt" /></label>
+          <label class="full">Tags (คั่นด้วย comma)<input id="fTags" placeholder="Top Creator, NSFW" /></label>
+          <label class="full">Notes (admin เท่านั้น)<textarea id="fNotes" rows="2"></textarea></label>
+        </div>
+        <p class="form-error" id="formError" hidden></p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="formCancel">ยกเลิก</button>
+          <button type="submit" class="btn btn-primary" id="formSubmit">บันทึก</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
