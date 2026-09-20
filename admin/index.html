@@ -59,6 +59,7 @@
         <option value="deleted">ถูกลบ (soft)</option>
       </select>
       <button class="btn btn-primary" id="btnAdd">+ เพิ่มครีเอเตอร์</button>
+      <button class="btn btn-ghost" id="btnImport">นำเข้า CSV/JSON</button>
       <button class="btn btn-ghost" id="btnRefresh">รีเฟรช</button>
     </div>
 
@@ -82,6 +83,26 @@
       </table>
     </div>
   </section>
+
+  <!-- Modal: Bulk Import -->
+  <div class="modal" id="importModal" hidden>
+    <div class="modal-backdrop" id="importBackdrop"></div>
+    <div class="modal-panel import-panel">
+      <h2>นำเข้าครีเอเตอร์หลายรายการ</h2>
+      <p class="modal-help">รองรับ CSV หรือ JSON สูงสุด 250 รายการต่อครั้ง ระบบจะตรวจ handle ซ้ำและใช้ avatar จาก URL หรือสร้างอวตารสำรองให้โดยอัตโนมัติ</p>
+      <input type="file" id="importFile" accept=".csv,.json,application/json,text/csv" />
+      <label class="full import-label">หรือวาง JSON/CSV
+        <textarea id="importText" rows="8" placeholder='JSON: [{"name":"...","handle":"...","followers":1000,"avatar":"https://...","tags":["18+","Thailand"]}]'></textarea>
+      </label>
+      <div id="importPreview" class="import-preview" hidden></div>
+      <p class="form-error" id="importError" hidden></p>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" id="importCancel">ยกเลิก</button>
+        <button type="button" class="btn btn-ghost" id="importPreviewBtn">ตรวจข้อมูล</button>
+        <button type="button" class="btn btn-primary" id="importSubmit" disabled>นำเข้า</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal: Create / Edit -->
   <div class="modal" id="formModal" hidden>

@@ -237,6 +237,15 @@ a:hover { text-decoration: underline; }
   overflow-y: auto;
 }
 .modal-panel h2 { margin-bottom: 20px; font-size: 1.2rem; }
+.import-panel { max-width: 680px; }
+.modal-help { color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin: -8px 0 16px; }
+.import-panel > input[type="file"] { width: 100%; padding: 10px; background: var(--bg-elevated); border: 1px dashed var(--border); border-radius: 8px; color: var(--text-muted); margin-bottom: 12px; }
+.import-label { display: flex; flex-direction: column; gap: 6px; color: var(--text-muted); font-size: 0.8rem; }
+.import-label textarea { width: 100%; resize: vertical; }
+.import-preview { margin-top: 14px; padding: 12px 14px; border: 1px solid rgba(52, 211, 153, 0.35); background: rgba(52, 211, 153, 0.07); border-radius: 10px; font-size: 0.82rem; line-height: 1.6; }
+.import-preview ul { margin: 8px 0 0 18px; color: var(--text-muted); }
+.import-preview small { color: var(--text-muted); }
+.import-warn { display: block; color: var(--warn); margin-top: 4px; }
 
 .form-grid {
   display: grid;
