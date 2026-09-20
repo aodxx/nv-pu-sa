@@ -11,7 +11,7 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "nv-pu-sa-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "e3e0d9a4-5afc-405b-9331-9cae0153106a"
 
 # ตัวอย่าง secrets ที่ควรตั้ง (อย่าใส่ค่าจริงในไฟล์นี้)
 # wrangler pages secret put ADMIN_PASSWORD
