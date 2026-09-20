@@ -24,7 +24,7 @@
 | Documentation set | ✅ Done |
 | Cloudflare D1 setup files | ✅ Done (wrangler + migrations) — ต้องสร้าง DB จริงด้วยบัญชี Cloudflare |
 | Admin Console | ❌ Not yet |
-| API | ❌ Not yet |
+| Public API (creators + random) | ✅ Done (ต้องมี D1 ถึงใช้งานได้) |
 | X Sync | ❌ Future |
 
 **Current branch:** `main`  
@@ -49,8 +49,8 @@
 1. เสร็จสิ้นชุดเอกสาร (PRD, Architecture, DB, API, Agents, etc.)
 2. สร้าง GitHub Issues สำหรับ backlog
 3. เพิ่ม `wrangler.toml` + D1 schema
-4. สร้าง Pages Functions สำหรับ `/api/creators`
-5. สร้างหน้า Admin พื้นฐาน
+4. ~~สร้าง Pages Functions สำหรับ `/api/creators`~~ ✅
+5. สร้างหน้า Admin พื้นฐาน / Admin CRUD
 
 ---
 

@@ -8,6 +8,12 @@
 ## [Unreleased]
 
 ### Added
+- Public API ครบตาม spec (ข้อ 2)
+  - `GET /api/creators` รองรับ q, filter, sort, limit, offset
+  - `GET /api/creators/random`
+- Frontend โหลดจาก API ก่อน แล้ว fallback เป็น `data/creators.json`
+
+### Added
 - Cloudflare D1 foundation (ข้อ 1)
   - `wrangler.toml`
   - `migrations/0001_init.sql` (schema + indexes)
