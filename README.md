@@ -1,40 +1,80 @@
 # นางฟ้า · แกลเลอรี่ครีเอเตอร์ X
 
 เวอร์ชันภาษาไทยของแพลตฟอร์มคัดสรรครีเอเตอร์บน X (Twitter)  
-คล้าย [nv-pu-sa.pages.dev](https://nv-pu-sa.pages.dev/) แต่ปรับให้เหมาะกับคนไทย
+แรงบันดาลใจจาก [nv-pu-sa.pages.dev](https://nv-pu-sa.pages.dev/)
 
-## ฟีเจอร์
+> **สถานะปัจจุบัน:** Static Gallery (v0.1.0) → กำลังพัฒนาเป็นระบบเต็มรูปแบบ (D1 + Admin + API)
 
-- แกลเลอรี่ครีเอเตอร์แบบการ์ดสวย
+---
+
+## Quick Links
+
+| เอกสาร | คำอธิบาย |
+|--------|----------|
+| [PRD.md](docs/PRD.md) | Product Requirements |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | สถาปัตยกรรมระบบ |
+| [DATABASE.md](docs/DATABASE.md) | Schema & Migrations |
+| [API.md](docs/API.md) | API Specification |
+| [AGENTS.md](docs/AGENTS.md) | คู่มือสำหรับ AI Agents |
+| [DECISIONS.md](docs/DECISIONS.md) | Architecture Decision Records |
+| [CONTEXT.md](docs/CONTEXT.md) | บริบทปัจจุบันของโปรเจกต์ |
+| [CHANGELOG.md](docs/CHANGELOG.md) | ประวัติการเปลี่ยนแปลง |
+| [ISSUES.md](docs/ISSUES.md) | Backlog & Issue แนะนำ |
+
+---
+
+## ฟีเจอร์ปัจจุบัน (v0.1.0)
+
+- แกลเลอรี่ครีเอเตอร์แบบการ์ดสวย (ธีมมืด)
 - ค้นหาชื่อ / @handle / Bio
-- กรองตาม: ทั้งหมด, ความนิยม, ยืนยันตัวตน, Top 100K+, รู้จัก 10K+, ใหม่ล่าสุด
+- กรอง: ทั้งหมด · ความนิยม · ยืนยันตัวตน · Top 100K+ · รู้จัก 10K+ · ใหม่ล่าสุด
 - เรียงลำดับหลายแบบ
-- Spotlight แนะนำสุ่ม
-- ปุ่มสุ่มสำรวจ (กด `R` หรือปุ่ม)
-- ธีมมืดสวยงาม
-- Responsive รองรับมือถือ
+- Spotlight แนะนำสุ่ม + ปุ่มสุ่มสำรวจ (`R`)
+- Responsive
+
+---
+
+## Roadmap สั้น ๆ
+
+| Phase | รายละเอียด | สถานะ |
+|-------|------------|--------|
+| M0 | Static site | ✅ Done |
+| M1 | เอกสารครบ + Issue backlog | 🔄 Now |
+| M2 | D1 + Admin CRUD | Planned |
+| M3 | Public API เชื่อม D1 | Planned |
+| M4 | Auth + Soft delete + Stats | Planned |
+| Phase 2 | X Sync, R2 images, Analytics | Future |
+
+รายละเอียดเต็มใน [PRD.md](docs/PRD.md)
+
+---
 
 ## โครงสร้างโปรเจกต์
 
 ```
-nv-pu-sa-th/
-├── index.html          # หน้าหลัก
-├── css/
-│   └── style.css       # สไตล์ทั้งหมด
-├── js/
-│   └── app.js          # ตรรกะทั้งหมด
-├── data/
-│   └── creators.json   # ข้อมูลครีเอเตอร์ (แก้ไขได้ง่าย)
-├── assets/             # รูปภาพเพิ่มเติม (ถ้ามี)
+nv-pu-sa/
+├── index.html              # Public gallery
+├── css/style.css
+├── js/app.js
+├── data/creators.json      # ข้อมูลตัวอย่างปัจจุบัน
+├── docs/                   # เอกสารพัฒนาระบบทั้งหมด
+│   ├── PRD.md
+│   ├── ARCHITECTURE.md
+│   ├── DATABASE.md
+│   ├── API.md
+│   ├── AGENTS.md
+│   ├── DECISIONS.md
+│   ├── CONTEXT.md
+│   ├── CHANGELOG.md
+│   └── ISSUES.md
+├── .github/
+│   └── ISSUE_TEMPLATE/
 └── README.md
 ```
 
-## วิธีรัน
+---
 
-### แบบง่าย (Local)
-
-เปิดไฟล์ `index.html` ด้วยเบราว์เซอร์ได้เลย  
-หรือใช้ live server:
+## วิธีรันตอนนี้ (Static)
 
 ```bash
 npx serve .
@@ -42,58 +82,36 @@ npx serve .
 python -m http.server 3000
 ```
 
-### Deploy บน Cloudflare Pages (แนะนำ)
+เปิด http://localhost:3000
 
-1. ไปที่ [Cloudflare Pages](https://pages.cloudflare.com/)
-2. Create project → เชื่อม GitHub repo นี้
-3. Build settings:
-   - Framework preset: **None**
-   - Build command: *(เว้นว่าง)*
-   - Output directory: `/` (หรือ `.`)
-4. Deploy → ได้ URL แบบ `xxx.pages.dev`
+---
 
-### Deploy บน GitHub Pages
+## Deploy
 
-1. ไปที่ Settings → Pages
-2. Source: Deploy from a branch
-3. Branch: `main` / folder: `/ (root)`
-4. Save
+### Cloudflare Pages (แนะนำ)
+1. Connect repo `aodxx/nv-pu-sa`
+2. Framework preset: **None**
+3. Build command: เว้นว่าง
+4. Output directory: `/`
 
-## วิธีเพิ่มครีเอเตอร์
+### GitHub Pages
+Settings → Pages → Deploy from branch `main` / root
 
-แก้ไขไฟล์ `data/creators.json` เพิ่ม object ตามรูปแบบนี้:
+---
 
-```json
-{
-  "id": 13,
-  "name": "ชื่อที่แสดง",
-  "handle": "username_บน_x",
-  "followers": 50000,
-  "verified": false,
-  "bio": "คำอธิบายสั้น ๆ",
-  "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ชื่ออะไรก็ได้",
-  "banner": null,
-  "links": {
-    "x": "https://x.com/username",
-    "onlyfans": "https://onlyfans.com/xxx",
-    "telegram": "https://t.me/xxx",
-    "linktree": "https://linktr.ee/xxx"
-  },
-  "tags": ["Top Creator", "NSFW"],
-  "addedAt": "2026-09-20"
-}
-```
+## การเพิ่มครีเอเตอร์ (ตอนนี้)
 
-- `avatar` สามารถใช้ URL รูปจริง หรือ DiceBear
-- `tags` ที่รองรับ: `"Top Creator"`, `"NSFW"`, `"Cosplay"`, `"Known"`, `"New"`
-- `verified`: `true` ถ้าเป็นบัญชีที่ยืนยันตัวตนบน X
+แก้ไข `data/creators.json` แล้ว commit + push  
+(ในอนาคตจะทำผ่าน Admin Console)
 
-## หมายเหตุ
+---
 
-- ข้อมูลตัวอย่างเป็นข้อมูลสมมติเพื่อสาธิต
-- คุณควรแทนที่ด้วยครีเอเตอร์จริงที่คุณคัดสรรเอง
-- โปรเจกต์นี้เป็น Static Site 100% ไม่มี backend
+## สำหรับ AI Agents / Contributors
+
+อ่าน [docs/AGENTS.md](docs/AGENTS.md) และ [docs/CONTEXT.md](docs/CONTEXT.md) ก่อนเริ่มงาน
+
+---
 
 ## License
 
-MIT — ใช้ได้อิสระ
+MIT
