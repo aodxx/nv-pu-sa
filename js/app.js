@@ -38,7 +38,7 @@ async function loadData() {
   const grid = $("#creatorGrid");
   try {
     // 1) ลอง Public API
-    const apiRes = await fetch("/api/creators?limit=200&sort=followers-desc", {
+    const apiRes = await fetch("api/creators?limit=200&sort=followers-desc", {
       headers: { Accept: "application/json" },
     });
 
@@ -259,7 +259,7 @@ function closeModal() {
 async function randomExplore() {
   // ลอง API random ก่อน
   try {
-    const res = await fetch("/api/creators/random");
+    const res = await fetch("api/creators/random");
     if (res.ok) {
       const data = await res.json();
       if (data.creator) {

@@ -71,7 +71,7 @@ async function tryRestoreSession() {
     return;
   }
   try {
-    await api("/api/admin/stats");
+    await api("../api/admin/stats");
     showDash();
     await loadAll();
   } catch {
@@ -90,7 +90,7 @@ async function doLogin(e) {
   btn.disabled = true;
   btn.textContent = "กำลังเข้าสู่ระบบ...";
   try {
-    const data = await api("/api/admin/auth", {
+    const data = await api("../api/admin/auth", {
       method: "POST",
       body: JSON.stringify({ password }),
     });
@@ -111,7 +111,7 @@ async function doLogin(e) {
 
 async function loadStats() {
   try {
-    const s = await api("/api/admin/stats");
+    const s = await api("../api/admin/stats");
     $("#sVisible").textContent = s.visible ?? "-";
     $("#sHidden").textContent = s.hidden ?? "-";
     $("#sVerified").textContent =
@@ -126,7 +126,7 @@ async function loadAll() {
   $("#tableBody").innerHTML =
     '<tr><td colspan="7" class="loading-cell">กำลังโหลด...</td></tr>';
   try {
-    const data = await api("/api/admin/creators?includeDeleted=1");
+    const data = await api("../api/admin/creators?includeDeleted=1");
     allCreators = data.creators || [];
     renderTable();
     await loadStats();
@@ -266,13 +266,13 @@ async function submitForm(e) {
   btn.disabled = true;
   try {
     if (editingId) {
-      await api(`/api/admin/creators/${editingId}`, {
+      await api(`../api/admin/creators/${editingId}`, {
         method: "PUT",
         body: JSON.stringify(body),
       });
       toast("บันทึกการแก้ไขแล้ว");
     } else {
-      await api("/api/admin/creators", {
+      await api("../api/admin/creators", {
         method: "POST",
         body: JSON.stringify(body),
       });
@@ -296,7 +296,7 @@ async function rowAction(id, act) {
       return;
     }
     if (act === "hide" || act === "unhide" || act === "restore") {
-      await api(`/api/admin/creators/${id}`, {
+      await api(`../api/admin/creators/${id}`, {
         method: "POST",
         body: JSON.stringify({ action: act }),
       });
@@ -308,14 +308,14 @@ async function rowAction(id, act) {
     }
     if (act === "delete") {
       if (!confirm("Soft delete ครีเอเตอร์นี้?")) return;
-      await api(`/api/admin/creators/${id}`, { method: "DELETE" });
+      await api(`../api/admin/creators/${id}`, { method: "DELETE" });
       toast("ลบแล้ว (soft)");
       await loadAll();
       return;
     }
     if (act === "hard") {
       if (!confirm("ลบถาวร? กู้คืนไม่ได้")) return;
-      await api(`/api/admin/creators/${id}?hard=true`, { method: "DELETE" });
+      await api(`../api/admin/creators/${id}?hard=true`, { method: "DELETE" });
       toast("ลบถาวรแล้ว");
       await loadAll();
     }

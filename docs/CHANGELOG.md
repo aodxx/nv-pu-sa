@@ -8,6 +8,9 @@
 ## [Unreleased]
 
 ### Added
+- GitHub Actions deploy workflow (`.github/workflows/github-pages.yml`)
+- docs/DEPLOY_CLOUDFLARE.md + DEPLOY_GITHUB_PAGES.md
+- Relative paths สำหรับ GitHub project site (`/nv-pu-sa/`)
 - Admin Console UI ที่ `/admin/`
   - Login ด้วย password
   - สถิติสรุป

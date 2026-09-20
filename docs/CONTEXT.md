@@ -47,6 +47,14 @@
 
 ## 4. Immediate Next Steps
 
+1. เปิด GitHub Pages แบบ **GitHub Actions** (workflow มีแล้ว) หรือ Deploy from branch `main`
+2. Deploy Cloudflare Pages + D1 ตาม docs/DEPLOY_CLOUDFLARE.md
+3. ตั้ง ADMIN_PASSWORD แล้วทดสอบ /admin/
+
+## 4b. Notes
+
+
+
 1. เสร็จสิ้นชุดเอกสาร (PRD, Architecture, DB, API, Agents, etc.)
 2. สร้าง GitHub Issues สำหรับ backlog
 3. เพิ่ม `wrangler.toml` + D1 schema
