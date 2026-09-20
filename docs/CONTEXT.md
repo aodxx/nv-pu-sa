@@ -21,8 +21,8 @@
 | Static Gallery (HTML/CSS/JS) | ✅ Done |
 | Sample data (12 creators) | ✅ Done |
 | GitHub Repo | ✅ https://github.com/aodxx/nv-pu-sa |
-| Documentation set | 🔄 In progress (this commit) |
-| Cloudflare D1 | ❌ Not yet |
+| Documentation set | ✅ Done |
+| Cloudflare D1 setup files | ✅ Done (wrangler + migrations) — ต้องสร้าง DB จริงด้วยบัญชี Cloudflare |
 | Admin Console | ❌ Not yet |
 | API | ❌ Not yet |
 | X Sync | ❌ Future |

@@ -1,0 +1,18 @@
+# Cloudflare Pages + D1 configuration
+# Project: นางฟ้า · แกลเลอรี่ครีเอเตอร์ X
+
+name = "nv-pu-sa"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "."
+
+# D1 Database binding
+# หลังจากสร้าง database แล้ว ให้ใส่ database_id จริงจากคำสั่ง:
+#   wrangler d1 create nv-pu-sa-db
+[[d1_databases]]
+binding = "DB"
+database_name = "nv-pu-sa-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# ตัวอย่าง secrets ที่ควรตั้ง (อย่าใส่ค่าจริงในไฟล์นี้)
+# wrangler pages secret put ADMIN_PASSWORD
+# wrangler secret put ADMIN_PASSWORD   (ถ้าใช้ Workers)

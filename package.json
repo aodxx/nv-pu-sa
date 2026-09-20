@@ -1,0 +1,18 @@
+{
+  "name": "nv-pu-sa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "นางฟ้า · แกลเลอรี่ครีเอเตอร์ X — Thai curated X creators gallery",
+  "scripts": {
+    "dev": "wrangler pages dev . --d1=DB --local",
+    "deploy": "wrangler pages deploy .",
+    "db:create": "wrangler d1 create nv-pu-sa-db",
+    "db:migrate:local": "wrangler d1 execute nv-pu-sa-db --local --file=./migrations/0001_init.sql && wrangler d1 execute nv-pu-sa-db --local --file=./migrations/0002_seed.sql",
+    "db:migrate:remote": "wrangler d1 execute nv-pu-sa-db --remote --file=./migrations/0001_init.sql && wrangler d1 execute nv-pu-sa-db --remote --file=./migrations/0002_seed.sql",
+    "db:console:local": "wrangler d1 execute nv-pu-sa-db --local --command=\"SELECT id, name, handle, followers FROM creators ORDER BY followers DESC LIMIT 20\"",
+    "db:console:remote": "wrangler d1 execute nv-pu-sa-db --remote --command=\"SELECT id, name, handle, followers FROM creators ORDER BY followers DESC LIMIT 20\""
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

@@ -8,19 +8,13 @@
 ## [Unreleased]
 
 ### Added
-- ชุดเอกสารพัฒนาระบบครบชุด (`docs/`)
-  - PRD.md
-  - ARCHITECTURE.md
-  - DATABASE.md
-  - API.md
-  - AGENTS.md
-  - DECISIONS.md
-  - CONTEXT.md
-  - CHANGELOG.md
-- GitHub Issue templates และ backlog issues
+- Cloudflare D1 foundation (ข้อ 1)
+  - `wrangler.toml`
+  - `migrations/0001_init.sql` (schema + indexes)
+  - `migrations/0002_seed.sql` (12 sample creators)
+  - `package.json` + npm scripts สำหรับ migrate / console
+  - `docs/SETUP_D1.md` คู่มือ setup
 
-### Changed
-- README.md อัปเดตให้สะท้อนแผนพัฒนาระบบ
 
 ---
 

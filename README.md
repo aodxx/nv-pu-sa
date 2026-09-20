@@ -20,6 +20,7 @@
 | [CONTEXT.md](docs/CONTEXT.md) | บริบทปัจจุบันของโปรเจกต์ |
 | [CHANGELOG.md](docs/CHANGELOG.md) | ประวัติการเปลี่ยนแปลง |
 | [ISSUES.md](docs/ISSUES.md) | Backlog & Issue แนะนำ |
+| [SETUP_D1.md](docs/SETUP_D1.md) | คู่มือ Setup Cloudflare D1 |
 
 ---
 
