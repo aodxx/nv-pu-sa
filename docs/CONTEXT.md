@@ -23,7 +23,8 @@
 | GitHub Repo | ✅ https://github.com/aodxx/nv-pu-sa |
 | Documentation set | ✅ Done |
 | Cloudflare D1 setup files | ✅ Done (wrangler + migrations) — ต้องสร้าง DB จริงด้วยบัญชี Cloudflare |
-| Admin Console | ❌ Not yet |
+| Admin API (auth + CRUD + stats) | ✅ Done |
+| Admin Console UI | ❌ Not yet |
 | Public API (creators + random) | ✅ Done (ต้องมี D1 ถึงใช้งานได้) |
 | X Sync | ❌ Future |
 

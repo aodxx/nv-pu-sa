@@ -101,3 +101,37 @@ package.json       # scripts สะดวก
 ## ขั้นตอนถัดไปหลัง Setup นี้เสร็จ
 
 → สร้าง Public API `GET /api/creators` (ข้อ 2)
+
+
+---
+
+## Admin Auth (หลัง Setup D1)
+
+ตั้งรหัสผ่าน:
+
+```bash
+npx wrangler pages secret put ADMIN_PASSWORD
+# หรือตอน dev local ใส่ใน .dev.vars:
+# ADMIN_PASSWORD=your-secret-password
+```
+
+ไฟล์ `.dev.vars` (ไม่ commit):
+
+```
+ADMIN_PASSWORD=changeme
+```
+
+ทดสอบ login:
+
+```bash
+curl -X POST http://localhost:8788/api/admin/auth \
+  -H 'Content-Type: application/json' \
+  -d '{"password":"changeme"}'
+```
+
+ใช้ token:
+
+```bash
+curl http://localhost:8788/api/admin/creators \
+  -H "Authorization: Bearer <token>"
+```

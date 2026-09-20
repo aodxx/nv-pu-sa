@@ -8,6 +8,12 @@
 ## [Unreleased]
 
 ### Added
+- Admin API (ข้อ 3–4)
+  - `POST /api/admin/auth` — login รับ signed token
+  - `GET/POST /api/admin/creators` — list / create
+  - `GET/PUT/PATCH/DELETE /api/admin/creators/:id` — อ่าน แก้ soft-delete hide restore
+  - `GET /api/admin/stats`
+  - shared auth helper (`functions/_lib/auth.js`)
 - Public API ครบตาม spec (ข้อ 2)
   - `GET /api/creators` รองรับ q, filter, sort, limit, offset
   - `GET /api/creators/random`
