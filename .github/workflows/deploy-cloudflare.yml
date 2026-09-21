@@ -23,14 +23,19 @@ jobs:
         run: |
           if [ -z "$TOKEN" ]; then
             echo "::error::Missing GitHub secret CLOUDFLARE_API_TOKEN"
-            echo "Create a token at https://dash.cloudflare.com/profile/api-tokens"
-            echo "Permission needed: Cloudflare Pages — Edit"
-            echo "Then: Repo → Settings → Secrets and variables → Actions → New repository secret"
-            echo "Name: CLOUDFLARE_API_TOKEN"
             echo ""
-            echo "Alternatively deploy manually: npm run deploy"
+            echo "=== วิธีสร้าง Token ==="
+            echo "1. เปิด https://dash.cloudflare.com/profile/api-tokens"
+            echo "2. Create Token → template 'Edit Cloudflare Workers' หรือ Custom:"
+            echo "   - Account → Cloudflare Pages → Edit"
+            echo "3. คัดลอก token ไป GitHub:"
+            echo "   https://github.com/aodxx/nv-pu-sa/settings/secrets/actions"
+            echo "4. New repository secret"
+            echo "   Name: CLOUDFLARE_API_TOKEN"
+            echo "5. Actions → Deploy to Cloudflare Pages → Run workflow"
             exit 1
           fi
+          echo "CLOUDFLARE_API_TOKEN is set"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -45,6 +50,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 793f6dc7afb275fb3d03c869b1570a1a
-          # Production URL: https://nv-pu-sa-dh8.pages.dev
-          command: pages deploy . --project-name=nv-pu-sa
+          accountId: "793f6dc7afb275fb3d03c869b1570a1a"
+          command: pages deploy . --project-name=nv-pu-sa --branch=main
