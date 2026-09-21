@@ -117,6 +117,21 @@ async function loadStats() {
     $("#sVerified").textContent =
       s.verified != null ? `${s.verified} (${s.verifiedPercent || 0}%)` : "-";
     $("#sMax").textContent = formatFollowers(s.maxFollowers || 0);
+    if ($("#sEvents")) $("#sEvents").textContent = s.eventsTotal ?? 0;
+    if ($("#sEventsToday")) $("#sEventsToday").textContent = s.eventsToday ?? 0;
+    const box = $("#topClickedBox");
+    const list = $("#topClickedList");
+    if (box && list) {
+      const top = s.topClicked || [];
+      if (top.length) {
+        box.hidden = false;
+        list.textContent = top
+          .map((c) => `@${c.handle} (${c.clicks})`)
+          .join(" · ");
+      } else {
+        box.hidden = true;
+      }
+    }
   } catch (e) {
     console.warn("stats", e);
   }
@@ -145,6 +160,8 @@ function getFiltered() {
   if (f === "visible") list = list.filter((c) => !c.isHidden && !c.isDeleted);
   else if (f === "hidden") list = list.filter((c) => c.isHidden && !c.isDeleted);
   else if (f === "deleted") list = list.filter((c) => c.isDeleted);
+  else if (f === "sample")
+    list = list.filter((c) => (c.notes || "").includes("sample_seed"));
   else list = list.filter((c) => !c.isDeleted);
 
   if (q) {
@@ -182,6 +199,7 @@ function renderTable() {
         <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(tags)}</td>
         <td class="row-actions">
           <button class="btn btn-ghost btn-sm" data-act="edit">แก้ไข</button>
+          <button class="btn btn-ghost btn-sm" data-act="refresh_x" title="ดึงจาก X API">↻ X</button>
           ${
             c.isDeleted
               ? `<button class="btn btn-ghost btn-sm" data-act="restore">กู้คืน</button>`
@@ -293,6 +311,16 @@ async function rowAction(id, act) {
     if (act === "edit") {
       const c = allCreators.find((x) => x.id === id);
       if (c) openForm(c);
+      return;
+    }
+    if (act === "refresh_x") {
+      toast("กำลังซิงก์จาก X...");
+      await api(`../api/admin/creators/${id}`, {
+        method: "POST",
+        body: JSON.stringify({ action: "refresh_x" }),
+      });
+      toast("ซิงก์จาก X แล้ว");
+      await loadAll();
       return;
     }
     if (act === "hide" || act === "unhide" || act === "restore") {

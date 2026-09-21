@@ -310,3 +310,13 @@ a:hover { text-decoration: underline; }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid label.checkbox-label { padding-top: 8px; }
 }
+
+.stats-row { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.top-clicked {
+  max-width: 1200px;
+  margin: 12px auto 0;
+  padding: 0 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.top-clicked strong { color: var(--text); }

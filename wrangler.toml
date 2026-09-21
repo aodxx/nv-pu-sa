@@ -16,3 +16,9 @@ database_id = "e3e0d9a4-5afc-405b-9331-9cae0153106a"
 # ตัวอย่าง secrets ที่ควรตั้ง (อย่าใส่ค่าจริงในไฟล์นี้)
 # wrangler pages secret put ADMIN_PASSWORD
 # wrangler secret put ADMIN_PASSWORD   (ถ้าใช้ Workers)
+
+# R2 for avatars (สร้าง bucket แล้วค่อย uncomment)
+# npx wrangler r2 bucket create nv-pu-sa-avatars
+# [[r2_buckets]]
+# binding = "AVATARS"
+# bucket_name = "nv-pu-sa-avatars"

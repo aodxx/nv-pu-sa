@@ -117,10 +117,13 @@ async function updateCreator(context) {
     return jsonError("VALIDATION_ERROR", "Body ต้องเป็น JSON");
   }
 
-  // Action shortcuts: hide / unhide / restore
+  // Action shortcuts: hide / unhide / restore / refresh_x
   const action = body.action || new URL(request.url).searchParams.get("action");
   if (action === "hide" || action === "unhide" || action === "restore") {
     return runAction(env.DB, id, action, existing);
+  }
+  if (action === "refresh_x") {
+    return refreshFromX(env, id, existing);
   }
 
   const name = body.name != null ? String(body.name).trim() : existing.name;
@@ -213,6 +216,67 @@ async function runAction(db, id, action, existing) {
   }
   const row = await getById(db, id);
   return jsonOk({ creator: mapRow(row) });
+}
+
+
+/**
+ * Refresh profile fields from X API v2 (requires env.X_BEARER_TOKEN)
+ * Updates: name, followers, verified, bio, avatar_url
+ */
+async function refreshFromX(env, id, existing) {
+  const token = env.X_BEARER_TOKEN;
+  if (!token) {
+    return jsonError(
+      "X_NOT_CONFIGURED",
+      "ตั้ง secret X_BEARER_TOKEN (Twitter API Bearer) ก่อน",
+      503
+    );
+  }
+
+  const handle = existing.handle;
+  try {
+    const url =
+      "https://api.x.com/2/users/by/username/" +
+      encodeURIComponent(handle) +
+      "?user.fields=public_metrics,profile_image_url,description,verified,verified_type,name";
+    const res = await fetch(url, {
+      headers: { Authorization: "Bearer " + token },
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      return jsonError(
+        "X_API_ERROR",
+        (data && data.detail) || (data && data.title) || "HTTP " + res.status,
+        502
+      );
+    }
+    const u = data.data;
+    if (!u) return jsonError("X_NOT_FOUND", "ไม่พบ @" + handle + " บน X", 404);
+
+    const followers = u.public_metrics?.followers_count ?? existing.followers;
+    const name = u.name || existing.name;
+    const bio = u.description != null ? u.description : existing.bio;
+    const avatar = u.profile_image_url
+      ? String(u.profile_image_url).replace("_normal", "_400x400")
+      : existing.avatar_url;
+    const verified =
+      u.verified || u.verified_type === "blue" || u.verified_type === "business"
+        ? 1
+        : existing.verified;
+    const ts = nowIso();
+
+    await env.DB.prepare(
+      `UPDATE creators SET name = ?, followers = ?, verified = ?, bio = ?, avatar_url = ?, updated_at = ? WHERE id = ?`
+    )
+      .bind(name, followers, verified, bio, avatar, ts, id)
+      .run();
+
+    await audit(env.DB, "refresh_x", id, { handle, followers });
+    const row = await getById(env.DB, id);
+    return jsonOk({ creator: mapRow(row), syncedFrom: "x" });
+  } catch (err) {
+    return jsonError("INTERNAL", String(err?.message || err), 500);
+  }
 }
 
 export async function onRequestDelete(context) {

@@ -8,6 +8,14 @@
 ## [Unreleased]
 
 ### Added
+- Migration 0007: soft-hide demo seed creators (12 ราย dicebear)
+- Admin: กรองตัวอย่าง, สถิติคลิก, ปุ่ม ↻ X (refresh จาก X API)
+- `POST /api/admin/upload` สำหรับอัปโหลดรูปขึ้น R2 (binding AVATARS)
+- `docs/OPS_PENDING.md` คำสั่ง migration ที่ต้องรันด้วยมือ
+
+
+
+### Added
 - Analytics Phase 2: `creator_events` + `POST /api/events/track`
 - Gallery ส่ง beacon เมื่อเปิด modal / คลิกลิงก์ X, OnlyFans, Telegram, Linktree
 - Admin stats แสดง eventsTotal, eventsToday, topClicked

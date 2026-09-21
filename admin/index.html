@@ -47,6 +47,11 @@
       <div class="stat-card"><div class="stat-val" id="sHidden">-</div><div class="stat-lbl">ซ่อน</div></div>
       <div class="stat-card"><div class="stat-val" id="sVerified">-</div><div class="stat-lbl">ยืนยันตัวตน</div></div>
       <div class="stat-card"><div class="stat-val" id="sMax">-</div><div class="stat-lbl">ฟอลสูงสุด</div></div>
+      <div class="stat-card"><div class="stat-val" id="sEvents">-</div><div class="stat-lbl">คลิกทั้งหมด</div></div>
+      <div class="stat-card"><div class="stat-val" id="sEventsToday">-</div><div class="stat-lbl">คลิกวันนี้</div></div>
+    </div>
+    <div class="top-clicked" id="topClickedBox" hidden>
+      <strong>Top คลิก:</strong> <span id="topClickedList">-</span>
     </div>
 
     <!-- Toolbar -->
@@ -57,6 +62,7 @@
         <option value="visible">แสดงอยู่</option>
         <option value="hidden">ซ่อน</option>
         <option value="deleted">ถูกลบ (soft)</option>
+        <option value="sample">ตัวอย่าง (sample_seed)</option>
       </select>
       <button class="btn btn-primary" id="btnAdd">+ เพิ่มครีเอเตอร์</button>
       <button class="btn btn-ghost" id="btnImport">นำเข้า CSV/JSON</button>
