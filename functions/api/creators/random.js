@@ -11,7 +11,7 @@ function mapRow(row) {
     followers: row.followers,
     verified: !!row.verified,
     bio: row.bio,
-    avatar: row.avatar_url,
+    avatar: row.avatar_url || (row.handle ? "/api/avatar/" + encodeURIComponent(row.handle) : null),
     links: safeJson(row.links_json, {}),
     tags: safeJson(row.tags_json, []),
     addedAt: row.added_at ? String(row.added_at).slice(0, 10) : null,

@@ -31,6 +31,18 @@ function trackEvent(creatorId, type) {
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
+function avatarUrl(c) {
+  const handle = (c.handle || "").replace(/^@/, "");
+  const a = c.avatar || c.avatar_url || "";
+  // Prefer real hosted images (twimg, http uploaded); skip dicebear placeholders
+  if (a && !a.includes("dicebear") && !a.includes("ui-avatars.com")) {
+    return a;
+  }
+  if (handle) return "api/avatar/" + encodeURIComponent(handle);
+  if (a) return a;
+  return "api/avatar/unknown";
+}
+
 function formatFollowers(n) {
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
   if (n >= 1_000) return (n / 1_000).toFixed(1) + "K";
@@ -198,7 +210,7 @@ function renderGrid() {
       return `
     <article class="card" data-id="${c.id}">
       <div class="card-banner"></div>
-      <img class="card-avatar" src="${escapeAttr(c.avatar)}" alt="${escapeAttr(c.name)}" loading="lazy" />
+      <img class="card-avatar" src="${escapeAttr(avatarUrl(c))}" loading="lazy" onerror="this.onerror=null;this.src=\'https://ui-avatars.com/api/?name=\'+encodeURIComponent(this.alt||\'?\')+\'&size=256&background=1a1a24&color=a78bfa\'" alt="${escapeAttr(c.name)}" />
       <div class="card-body">
         <div class="card-name">
           ${escapeHtml(c.name)}
@@ -242,7 +254,7 @@ function renderSpotlight() {
   const c = creators[Math.floor(Math.random() * creators.length)];
   const body = $("#spotlightBody");
   body.innerHTML = `
-    <img class="spotlight-avatar" src="${escapeAttr(c.avatar)}" alt="${escapeAttr(c.name)}" />
+    <img class="spotlight-avatar" src="${escapeAttr(avatarUrl(c))}" loading="lazy" onerror="this.onerror=null;this.src=\'https://ui-avatars.com/api/?name=\'+encodeURIComponent(this.alt||\'?\')+\'&size=256&background=1a1a24&color=a78bfa\'" alt="${escapeAttr(c.name)}" />
     <div class="spotlight-info">
       <h3>${escapeHtml(c.name)} ${c.verified ? "✓" : ""} <span class="spotlight-tag">Creator</span></h3>
       <div class="spotlight-handle">@${escapeHtml(c.handle)} · ${formatFollowers(c.followers)} ผู้ติดตาม</div>
@@ -259,7 +271,7 @@ function openModal(c) {
   const modal = $("#modal");
   const content = $("#modalContent");
   content.innerHTML = `
-    <img class="modal-avatar" src="${escapeAttr(c.avatar)}" alt="${escapeAttr(c.name)}" />
+    <img class="modal-avatar" src="${escapeAttr(avatarUrl(c))}" loading="lazy" onerror="this.onerror=null;this.src=\'https://ui-avatars.com/api/?name=\'+encodeURIComponent(this.alt||\'?\')+\'&size=256&background=1a1a24&color=a78bfa\'" alt="${escapeAttr(c.name)}" />
     <div class="modal-name">${escapeHtml(c.name)} ${c.verified ? "✓" : ""}</div>
     <div class="modal-handle">@${escapeHtml(c.handle)} · ${formatFollowers(c.followers)} ผู้ติดตาม</div>
     <div class="modal-bio">${escapeHtml(c.bio || "")}</div>

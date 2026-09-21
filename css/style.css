@@ -659,3 +659,26 @@ a:hover {
     align-items: flex-start;
   }
 }
+
+/* avatar quality */
+.card-avatar, .spotlight-avatar, .modal-avatar {
+  object-fit: cover;
+  background: #1a1a24;
+  image-rendering: auto;
+}
+.card-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(167,139,250,0.35);
+}
+.spotlight-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+}
+.modal-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
