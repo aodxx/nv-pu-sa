@@ -1,6 +1,6 @@
 # Project Context
 
-**Last Updated:** 2026-09-21 03:13 +07
+**Last Updated:** 2026-09-21 07:15 +07
 
 ---
 
@@ -8,7 +8,7 @@
 
 **นางฟ้า · แกลเลอรี่ครีเอเตอร์ X**  
 เวอร์ชันภาษาไทยของแพลตฟอร์มคัดสรรครีเอเตอร์บน X (Twitter)  
-แรงบันดาลใจจาก https://nv-pu-sa.pages.dev/ (女菩萨 · X 博主精选画廊)
+แรงบันดาลใจจาก https://nv-pu-sa.pages.dev/ (女菩萨)
 
 เป้าหมาย: ให้คนไทยค้นพบครีเอเตอร์คุณภาพได้ง่าย มีระบบคัดสรรและ admin
 
@@ -18,77 +18,61 @@
 
 | Item | Status |
 |------|--------|
-| Static Gallery (HTML/CSS/JS) | ✅ Done |
-| Sample data (12 creators) | ✅ Done |
+| Static Gallery | ✅ |
 | GitHub Repo | ✅ https://github.com/aodxx/nv-pu-sa |
-| Documentation set | ✅ Done |
-| Cloudflare D1 setup files | ✅ Done (wrangler + migrations) — ต้องสร้าง DB จริงด้วยบัญชี Cloudflare |
-| Admin API (auth + CRUD + stats) | ✅ Done |
-| Admin Console UI | ✅ Done (`/admin/`) |
-| Public API (creators + random) | ✅ Done (ต้องมี D1 ถึงใช้งานได้) |
+| Documentation | ✅ |
+| Cloudflare D1 | ✅ `nv-pu-sa-db` |
+| Public API | ✅ Live |
+| Admin API + UI | ✅ Live |
+| Bulk import CSV/JSON | ✅ |
+| Real Thai creators in D1 | ✅ ~22 คน |
+| GitHub Pages (static) | ✅ https://aodxx.github.io/nv-pu-sa/ |
+| Cloudflare Pages (full) | ✅ https://nv-pu-sa-dh8.pages.dev |
+| CI: Deploy GitHub Pages | ✅ success |
+| CI: Deploy Cloudflare | ⚠️ ล้มเมื่อขาด secret `CLOUDFLARE_API_TOKEN` (deploy ด้วย `npm run deploy` ได้) |
 | X Sync | ❌ Future |
+| R2 image cache | ❌ Future |
+| Analytics | ❌ Future |
 
-**Current branch:** `main`  
-**Latest commit (before docs):** Initial static version
+**Production URL:** https://nv-pu-sa-dh8.pages.dev  
+**Admin:** https://nv-pu-sa-dh8.pages.dev/admin/  
+**API:** https://nv-pu-sa-dh8.pages.dev/api/creators
 
 ---
 
-## 3. Important Decisions Already Made
+## 3. Stack
 
-- ใช้ Cloudflare ecosystem (Pages + D1)
-- Phase 1 ไม่ใช้ heavy frontend framework
-- Soft delete + soft hide
-- Admin auth แบบ password ง่าย ๆ ก่อน
-- ข้อมูล links/tags เก็บเป็น JSON text
-
-ดูรายละเอียดใน `DECISIONS.md`
+- Frontend: HTML / CSS / Vanilla JS
+- Backend: Cloudflare Pages Functions
+- DB: Cloudflare D1
+- Auth admin: HMAC token + `ADMIN_PASSWORD` secret
+- CI: GitHub Actions (Pages + Cloudflare)
 
 ---
 
 ## 4. Immediate Next Steps
 
-1. เปิด GitHub Pages แบบ **GitHub Actions** (workflow มีแล้ว) หรือ Deploy from branch `main`
-2. Deploy Cloudflare Pages + D1 ตาม docs/DEPLOY_CLOUDFLARE.md
-3. ตั้ง ADMIN_PASSWORD แล้วทดสอบ /admin/
-
-## 4b. Notes
-
-
-
-1. เสร็จสิ้นชุดเอกสาร (PRD, Architecture, DB, API, Agents, etc.)
-2. สร้าง GitHub Issues สำหรับ backlog
-3. เพิ่ม `wrangler.toml` + D1 schema
-4. ~~สร้าง Pages Functions สำหรับ `/api/creators`~~ ✅
-5. สร้างหน้า Admin พื้นฐาน / Admin CRUD
+1. ตั้ง GitHub secret `CLOUDFLARE_API_TOKEN` เพื่อให้ CI deploy Cloudflare ผ่าน
+2. ยืนยัน login Admin ได้ด้วยรหัสที่ตั้งไว้
+3. เติม/ตรวจครีเอเตอร์จริงผ่าน Admin หรือ bulk import
+4. (Phase 2) Analytics / R2 / X profile refresh
 
 ---
 
-## 5. Key People / Roles
+## 5. Known Issues
 
-- **Owner / Curator:** aodxx
-- **AI Agents:** ใช้เอกสารใน `docs/` และ `AGENTS.md` เป็นหลัก
-
----
-
-## 6. Known Limitations (Current)
-
-- ข้อมูลตัวอย่างเป็นข้อมูลสมมติ
-- แก้ไขข้อมูลต้องแก้ JSON + redeploy
-- ไม่มีระบบ auth
-- ไม่มี analytics จริง
-- ยังไม่มีระบบซิงก์จาก X
+- Workflow Cloudflare fail เมื่อไม่มี `CLOUDFLARE_API_TOKEN`
+- `data/creators.json` = fallback สำหรับ GitHub Pages — ข้อมูลจริงอยู่ที่ D1
+- URL `nv-pu-sa.pages.dev` เป็นโปรเจกต์จีนต้นฉบับ **ไม่ใช่** ของเรา
 
 ---
 
-## 7. Reference Links
+## 6. Key files
 
-- Live original (Chinese): https://nv-pu-sa.pages.dev/
-- This repo: https://github.com/aodxx/nv-pu-sa
-- Cloudflare D1 docs: https://developers.cloudflare.com/d1/
-- Cloudflare Pages Functions: https://developers.cloudflare.com/pages/functions/
-
----
-
-## 8. How to update this file
-
-ทุกครั้งที่มี milestone สำเร็จหรือเปลี่ยนทิศทางสำคัญ ให้มาอัปเดตส่วน **Current Status** และ **Immediate Next Steps**
+| Path | Role |
+|------|------|
+| `wrangler.toml` | D1 binding + project name |
+| `functions/api/*` | Public + Admin API |
+| `admin/` | Admin Console |
+| `migrations/` | D1 SQL |
+| `MAINTENANCE_GUIDE.md` | คู่มือดูแล production |

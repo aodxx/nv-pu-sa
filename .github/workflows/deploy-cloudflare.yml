@@ -17,6 +17,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check Cloudflare secrets
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Missing GitHub secret CLOUDFLARE_API_TOKEN"
+            echo "Create a token at https://dash.cloudflare.com/profile/api-tokens"
+            echo "Permission needed: Cloudflare Pages — Edit"
+            echo "Then: Repo → Settings → Secrets and variables → Actions → New repository secret"
+            echo "Name: CLOUDFLARE_API_TOKEN"
+            echo ""
+            echo "Alternatively deploy manually: npm run deploy"
+            exit 1
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -31,4 +46,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 793f6dc7afb275fb3d03c869b1570a1a
+          # Production URL: https://nv-pu-sa-dh8.pages.dev
           command: pages deploy . --project-name=nv-pu-sa

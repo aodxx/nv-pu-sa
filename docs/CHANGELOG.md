@@ -7,36 +7,15 @@
 
 ## [Unreleased]
 
-### Added
-- GitHub Actions deploy workflow (`.github/workflows/github-pages.yml`)
-- docs/DEPLOY_CLOUDFLARE.md + DEPLOY_GITHUB_PAGES.md
-- Relative paths สำหรับ GitHub project site (`/nv-pu-sa/`)
-- Admin Console UI ที่ `/admin/`
-  - Login ด้วย password
-  - สถิติสรุป
-  - ตารางครีเอเตอร์ + ค้นหา/กรอง
-  - เพิ่ม / แก้ไข / ซ่อน / ลบ / กู้คืน
-- Admin API (ข้อ 3–4)
-  - `POST /api/admin/auth` — login รับ signed token
-  - `GET/POST /api/admin/creators` — list / create
-  - `GET/PUT/PATCH/DELETE /api/admin/creators/:id` — อ่าน แก้ soft-delete hide restore
-  - `GET /api/admin/stats`
-  - shared auth helper (`functions/_lib/auth.js`)
-- Public API ครบตาม spec (ข้อ 2)
-  - `GET /api/creators` รองรับ q, filter, sort, limit, offset
-  - `GET /api/creators/random`
-- Frontend โหลดจาก API ก่อน แล้ว fallback เป็น `data/creators.json`
+### Fixed
+- ซิงก์ `data/creators.json` จาก production D1 (22 creators) สำหรับ GitHub Pages fallback
+- ปรับ Cloudflare Actions workflow ให้แจ้ง error ชัดเมื่อขาด `CLOUDFLARE_API_TOKEN`
 
-### Added
-- Cloudflare D1 foundation (ข้อ 1)
-  - `wrangler.toml`
-  - `migrations/0001_init.sql` (schema + indexes)
-  - `migrations/0002_seed.sql` (12 sample creators)
-  - `package.json` + npm scripts สำหรับ migrate / console
-  - `docs/SETUP_D1.md` คู่มือ setup
-
-
----
+### Added (โดย owner บน main)
+- ครีเอเตอร์ไทยจริงหลายราย + migrations 0003–0005
+- Bulk import CSV/JSON ใน Admin (`/api/admin/creators/import`)
+- Cloudflare D1 production + MAINTENANCE_GUIDE.md
+- CI deploy Cloudflare Pages
 
 ## [0.1.0] - 2026-09-21
 

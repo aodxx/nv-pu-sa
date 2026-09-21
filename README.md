@@ -3,6 +3,8 @@
 เวอร์ชันภาษาไทยของแพลตฟอร์มคัดสรรครีเอเตอร์บน X (Twitter)  
 แรงบันดาลใจจาก [nv-pu-sa.pages.dev](https://nv-pu-sa.pages.dev/)
 
+> **Production:** https://nv-pu-sa-dh8.pages.dev  
+> **GitHub Pages:** https://aodxx.github.io/nv-pu-sa/  
 > **สถานะปัจจุบัน:** Static Gallery (v0.1.0) → กำลังพัฒนาเป็นระบบเต็มรูปแบบ (D1 + Admin + API)
 
 ---

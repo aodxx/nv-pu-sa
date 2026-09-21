@@ -14,7 +14,10 @@
       "telegram": "https://t.me/minnie_th",
       "linktree": "https://linktr.ee/minnie_th"
     },
-    "tags": ["Top Creator", "NSFW"],
+    "tags": [
+      "Top Creator",
+      "NSFW"
+    ],
     "addedAt": "2026-08-15"
   },
   {
@@ -32,7 +35,9 @@
       "telegram": null,
       "linktree": "https://linktr.ee/noon_sweet"
     },
-    "tags": ["Top Creator"],
+    "tags": [
+      "Top Creator"
+    ],
     "addedAt": "2026-08-20"
   },
   {
@@ -50,7 +55,9 @@
       "telegram": "https://t.me/primrose_th",
       "linktree": "https://linktr.ee/primrose_th"
     },
-    "tags": ["Cosplay"],
+    "tags": [
+      "Cosplay"
+    ],
     "addedAt": "2026-09-01"
   },
   {
@@ -68,7 +75,10 @@
       "telegram": "https://t.me/belle_thai",
       "linktree": "https://linktr.ee/belle_thai"
     },
-    "tags": ["Top Creator", "NSFW"],
+    "tags": [
+      "Top Creator",
+      "NSFW"
+    ],
     "addedAt": "2026-07-10"
   },
   {
@@ -86,7 +96,9 @@
       "telegram": null,
       "linktree": null
     },
-    "tags": ["Known"],
+    "tags": [
+      "Known"
+    ],
     "addedAt": "2026-09-05"
   },
   {
@@ -104,7 +116,10 @@
       "telegram": "https://t.me/june_cutie",
       "linktree": "https://linktr.ee/june_cutie"
     },
-    "tags": ["Top Creator", "NSFW"],
+    "tags": [
+      "Top Creator",
+      "NSFW"
+    ],
     "addedAt": "2026-08-01"
   },
   {
@@ -140,7 +155,9 @@
       "telegram": "https://t.me/ploy_diamond",
       "linktree": "https://linktr.ee/ploy_diamond"
     },
-    "tags": ["Top Creator"],
+    "tags": [
+      "Top Creator"
+    ],
     "addedAt": "2026-07-25"
   },
   {
@@ -158,7 +175,9 @@
       "telegram": null,
       "linktree": "https://linktr.ee/kaem_smile"
     },
-    "tags": ["Known"],
+    "tags": [
+      "Known"
+    ],
     "addedAt": "2026-08-28"
   },
   {
@@ -176,7 +195,9 @@
       "telegram": "https://t.me/namtarn_sweet",
       "linktree": null
     },
-    "tags": ["New"],
+    "tags": [
+      "New"
+    ],
     "addedAt": "2026-09-12"
   },
   {
@@ -194,7 +215,9 @@
       "telegram": "https://t.me/mook_pearl",
       "linktree": "https://linktr.ee/mook_pearl"
     },
-    "tags": ["Top Creator"],
+    "tags": [
+      "Top Creator"
+    ],
     "addedAt": "2026-08-05"
   },
   {
@@ -212,7 +235,219 @@
       "telegram": null,
       "linktree": "https://linktr.ee/som_orange"
     },
-    "tags": ["New"],
+    "tags": [
+      "New"
+    ],
     "addedAt": "2026-09-15"
+  },
+  {
+    "id": 13,
+    "name": "ฝ้าย อรพรรณ สมอหอม (Faii Orapun)",
+    "handle": "orapunfaii",
+    "followers": 1100000,
+    "verified": true,
+    "bio": "นางแบบและครีเอเตอร์ชาวไทยสายแฟชั่น ฟิตเนส และคอนเทนต์แบบสมัครสมาชิก · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=orapunfaii",
+    "banner": null,
+    "links": {
+      "x": "https://x.com/orapun_fb",
+      "instagram": "https://www.instagram.com/orapunfaii/",
+      "onlyfans": "https://onlyfans.com/imfaii"
+    },
+    "tags": [
+      "Popular",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 14,
+    "name": "Jintana Tingsa (Janny)",
+    "handle": "jannyjintana",
+    "followers": 650000,
+    "verified": false,
+    "bio": "ครีเอเตอร์และนางแบบชาวไทย ใช้ชื่อ Jintana/Janny และเชื่อมช่องทางสมาชิกผ่านโปรไฟล์สาธารณะ · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=jannyjintana",
+    "banner": null,
+    "links": {
+      "x": "https://x.com/jannybb7",
+      "instagram": "https://www.instagram.com/jannyjintana/",
+      "onlyfans": "https://onlyfans.com/jannybbxoxo",
+      "linktree": "https://linktr.ee/jintanap"
+    },
+    "tags": [
+      "Popular",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 15,
+    "name": "อีฟ (Eve)",
+    "handle": "letsplaywitheve",
+    "followers": 143300,
+    "verified": false,
+    "bio": "ครีเอเตอร์หญิงไทยสาย sapphic ที่ใช้ X สาธารณะสื่อสารและโปรโมตช่องทางแบบจำกัดการเข้าถึง · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=letsplaywitheve",
+    "banner": null,
+    "links": {
+      "x": "https://x.com/letsplaywitheve",
+      "x_alt": "https://x.com/callme_EVE_"
+    },
+    "tags": [
+      "Popular",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 16,
+    "name": "กี้ (Gyi) / Sweetie Smooth",
+    "handle": "sweetiesmooth",
+    "followers": 0,
+    "verified": false,
+    "bio": "ครีเอเตอร์หญิงไทยในชื่อ Sweetie Smooth ที่เผยแพร่คอนเทนต์แบบสมัครสมาชิก · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=sweetiesmooth",
+    "banner": null,
+    "links": {
+      "x": "https://x.com/Smsmsmooth",
+      "instagram": "https://www.instagram.com/Sweetie_Smooth.ss/",
+      "onlyfans": "https://onlyfans.com/sweetiesmooth"
+    },
+    "tags": [
+      "18+",
+      "Thailand",
+      "Creator"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 17,
+    "name": "Yanisa Samohom (Noey Yanisa / Yingnoey)",
+    "handle": "yingnoey2808",
+    "followers": 991400,
+    "verified": false,
+    "bio": "นางแบบและโซเชียลครีเอเตอร์ไทยสายไลฟ์สไตล์ โมเดลลิง และคอนเทนต์แบบสมัครสมาชิก · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=yingnoey2808",
+    "banner": null,
+    "links": {
+      "instagram": "https://www.instagram.com/yingnoey2808/",
+      "threads": "https://www.threads.com/@yingnoey2808",
+      "x": "https://x.com/yingnoey2808"
+    },
+    "tags": [
+      "Popular",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 18,
+    "name": "Saranya Jarsry (JaJar)",
+    "handle": "jarja.saranya",
+    "followers": 764000,
+    "verified": false,
+    "bio": "นางแบบและครีเอเตอร์ไทยสายแฟชั่น ไลฟ์สไตล์ และคอนเทนต์แบบสมัครสมาชิก · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=jarja.saranya",
+    "banner": null,
+    "links": {
+      "instagram": "https://www.instagram.com/jarja.saranya/",
+      "x": "https://x.com/jarja.saranya"
+    },
+    "tags": [
+      "Popular",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 19,
+    "name": "Sumitra Sarakorn (Kluaykhek)",
+    "handle": "su.mitra_sa",
+    "followers": 268000,
+    "verified": false,
+    "bio": "นางแบบและอินฟลูเอนเซอร์ไทยสายถ่ายแบบและคอนเทนต์สำหรับผู้ใหญ่ พร้อมช่องทางรวมจากเจ้าตัว · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=su.mitra_sa",
+    "banner": null,
+    "links": {
+      "instagram": "https://www.instagram.com/su.mitra_sa/",
+      "linktree": "https://linktr.ee/kluaykhek",
+      "onlyfans": "https://onlyfans.com/sumitra.kluay",
+      "x": "https://x.com/sumitra245"
+    },
+    "tags": [
+      "Known",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 20,
+    "name": "Wila Thai",
+    "handle": "ThaiWila",
+    "followers": 12600,
+    "verified": false,
+    "bio": "นางแบบและอินฟลูเอนเซอร์ไทยสายแฟชั่น ไลฟ์สไตล์ และคอนเทนต์สำหรับผู้ใหญ่ผ่านช่องทางสาธารณะ · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ThaiWila",
+    "banner": null,
+    "links": {
+      "x": "https://x.com/ThaiWila",
+      "instagram": "https://www.instagram.com/wila_thai_beauty/"
+    },
+    "tags": [
+      "18+",
+      "Thailand",
+      "Creator"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 21,
+    "name": "Sirikhwan Triwiset (Fuji Chan)",
+    "handle": "nong_fuji_chan",
+    "followers": 62100,
+    "verified": false,
+    "bio": "ครีเอเตอร์และนางแบบไทยสายไลฟ์สไตล์ งานถ่ายแบบ และคอนเทนต์ R18+ ผ่านแพลตฟอร์มสมัครสมาชิก · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=nong_fuji_chan",
+    "banner": null,
+    "links": {
+      "instagram": "https://www.instagram.com/nong.fuji.chan/",
+      "x": "https://x.com/N_FUJI_CHAN",
+      "fansly": "https://fansly.com/FUJI_CHAN",
+      "linktree": "https://linktr.ee/Fujichan"
+    },
+    "tags": [
+      "18+",
+      "Thailand",
+      "Creator"
+    ],
+    "addedAt": "2026-09-21"
+  },
+  {
+    "id": 22,
+    "name": "Macy Nihongo",
+    "handle": "macy_nihongo_thai",
+    "followers": 68300,
+    "verified": false,
+    "bio": "ครีเอเตอร์และนางแบบไทย-ญี่ปุ่นสายภาพถ่าย วิดีโอ และคอนเทนต์สำหรับผู้ใหญ่ผ่านช่องทางสาธารณะ · โปรดตรวจสอบอายุผู้ชมก่อนเข้าชมเนื้อหาภายนอก",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=macy_nihongo_thai",
+    "banner": null,
+    "links": {
+      "instagram": "https://www.instagram.com/macy_nihongo_thai/",
+      "x": "https://x.com/Thai_Jpn_Queen",
+      "onlyfans": "https://onlyfans.com/macynihongo/c18"
+    },
+    "tags": [
+      "Known",
+      "18+",
+      "Thailand"
+    ],
+    "addedAt": "2026-09-21"
   }
 ]
