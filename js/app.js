@@ -7,6 +7,27 @@ let currentSort = "followers-desc";
 let searchQuery = "";
 let dataSource = "json"; // "api" | "json"
 
+function trackEvent(creatorId, type) {
+  if (!creatorId || !type) return;
+  const body = JSON.stringify({ creatorId: Number(creatorId), type });
+  try {
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(
+        "api/events/track",
+        new Blob([body], { type: "application/json" })
+      );
+      return;
+    }
+  } catch (_) {}
+  fetch("api/events/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body,
+    keepalive: true,
+  }).catch(() => {});
+}
+
+
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
@@ -188,14 +209,14 @@ function renderGrid() {
         <div class="card-followers">👥 <strong>${formatFollowers(c.followers)}</strong> ผู้ติดตาม</div>
         <div class="card-bio">${escapeHtml(c.bio || "")}</div>
         <div class="card-links">
-          ${links.x ? `<a class="card-link" href="${escapeAttr(links.x)}" target="_blank" rel="noopener">X</a>` : ""}
-          ${links.onlyfans ? `<a class="card-link" href="${escapeAttr(links.onlyfans)}" target="_blank" rel="noopener">OnlyFans</a>` : ""}
-          ${links.telegram ? `<a class="card-link" href="${escapeAttr(links.telegram)}" target="_blank" rel="noopener">Telegram</a>` : ""}
-          ${links.linktree ? `<a class="card-link" href="${escapeAttr(links.linktree)}" target="_blank" rel="noopener">Linktree</a>` : ""}
+          ${links.x ? `<a class="card-link" data-track="click_x" data-id="${c.id}" href="${escapeAttr(links.x)}" target="_blank" rel="noopener">X</a>` : ""}
+          ${links.onlyfans ? `<a class="card-link" data-track="click_of" data-id="${c.id}" href="${escapeAttr(links.onlyfans)}" target="_blank" rel="noopener">OnlyFans</a>` : ""}
+          ${links.telegram ? `<a class="card-link" data-track="click_tg" data-id="${c.id}" href="${escapeAttr(links.telegram)}" target="_blank" rel="noopener">Telegram</a>` : ""}
+          ${links.linktree ? `<a class="card-link" data-track="click_lt" data-id="${c.id}" href="${escapeAttr(links.linktree)}" target="_blank" rel="noopener">Linktree</a>` : ""}
         </div>
         <div class="card-footer">
           <span style="font-size:0.75rem;color:var(--text-muted)">เพิ่มเมื่อ ${escapeHtml(c.addedAt || "-")}</span>
-          <a class="btn-visit" href="${escapeAttr(links.x || "#")}" target="_blank" rel="noopener">เยี่ยมชม X ↗</a>
+          <a class="btn-visit" data-track="click_x" data-id="${c.id}" href="${escapeAttr(links.x || "#")}" target="_blank" rel="noopener">เยี่ยมชม X ↗</a>
         </div>
       </div>
     </article>`;
@@ -233,6 +254,7 @@ function renderSpotlight() {
 }
 
 function openModal(c) {
+  trackEvent(c.id, "view");
   const links = c.links || {};
   const modal = $("#modal");
   const content = $("#modalContent");
@@ -275,6 +297,12 @@ async function randomExplore() {
 }
 
 function bindEvents() {
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-track]");
+    if (!el) return;
+    trackEvent(Number(el.dataset.id), el.dataset.track);
+  });
+
   $("#searchInput").addEventListener("input", (e) => {
     searchQuery = e.target.value;
     applyFilters();

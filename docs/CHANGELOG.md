@@ -7,6 +7,14 @@
 
 ## [Unreleased]
 
+### Added
+- Analytics Phase 2: `creator_events` + `POST /api/events/track`
+- Gallery ส่ง beacon เมื่อเปิด modal / คลิกลิงก์ X, OnlyFans, Telegram, Linktree
+- Admin stats แสดง eventsTotal, eventsToday, topClicked
+- CI Cloudflare สำเร็จหลังตั้ง `CLOUDFLARE_API_TOKEN`
+
+
+
 ### Fixed
 - ซิงก์ `data/creators.json` จาก production D1 (22 creators) สำหรับ GitHub Pages fallback
 - ปรับ Cloudflare Actions workflow ให้แจ้ง error ชัดเมื่อขาด `CLOUDFLARE_API_TOKEN`

@@ -43,6 +43,39 @@ export async function onRequestGet(context) {
        LIMIT 5`
     ).all();
 
+    // Analytics (optional until migration 0006)
+    let eventsTotal = 0;
+    let eventsToday = 0;
+    let topClicked = [];
+    try {
+      const ev = await env.DB.prepare(
+        `SELECT
+           COUNT(*) AS total,
+           SUM(CASE WHEN date(created_at) = date('now') THEN 1 ELSE 0 END) AS today
+         FROM creator_events`
+      ).first();
+      eventsTotal = Number(ev?.total || 0);
+      eventsToday = Number(ev?.today || 0);
+
+      const { results: clicked } = await env.DB.prepare(
+        `SELECT c.id, c.name, c.handle, COUNT(e.id) AS clicks
+         FROM creator_events e
+         JOIN creators c ON c.id = e.creator_id
+         WHERE e.event_type LIKE 'click%'
+         GROUP BY c.id
+         ORDER BY clicks DESC
+         LIMIT 5`
+      ).all();
+      topClicked = (clicked || []).map((r) => ({
+        id: r.id,
+        name: r.name,
+        handle: r.handle,
+        clicks: Number(r.clicks || 0),
+      }));
+    } catch (_) {
+      /* table may not exist yet */
+    }
+
     return jsonOk({
       total: Number(row?.total || 0),
       visible: Number(row?.visible || 0),
@@ -60,6 +93,9 @@ export async function onRequestGet(context) {
         followers: r.followers,
         verified: !!r.verified,
       })),
+      eventsTotal,
+      eventsToday,
+      topClicked,
     });
   } catch (err) {
     return jsonError("INTERNAL", String(err?.message || err), 500);
